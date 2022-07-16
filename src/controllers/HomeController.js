@@ -157,8 +157,8 @@ let setupProfile = (req, res) => {
   // call profile facebook api
   // Construct the message body
   let request_body = {
-    get_started: "GET_STARTED",
-    whitelisted_domains: "https://cocoman-restaurant-chatbot.herokuapp.com/",
+    get_started: { payload: "GET_STARTED" },
+    whitelisted_domains: ["https://cocoman-restaurant-chatbot.herokuapp.com/"],
   };
 
   // Send the HTTP request to the Messenger Platform
@@ -170,6 +170,7 @@ let setupProfile = (req, res) => {
       json: request_body,
     },
     (err, res, body) => {
+      console.log(body);
       if (!err) {
         console.log("Set up user's profile successfully!");
       } else {
