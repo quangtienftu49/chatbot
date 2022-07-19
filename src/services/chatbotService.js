@@ -34,7 +34,7 @@ let handleGetStarted = () => {
   return Promise(async (resolve, reject) => {
     try {
       let response = { text: "Welcome to CocoMan restaurant!" };
-      await this.callSendAPI(response);
+      await callSendAPI(response);
       resolve("done");
     } catch (e) {
       reject(e);
