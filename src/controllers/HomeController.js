@@ -201,9 +201,60 @@ let setupProfile = async (req, res) => {
   return res.send("Set up user's profile successfully!");
 };
 
+let setupPersistentMenu = async (req, res) => {
+  let request_body = {
+    persistent_menu: [
+      {
+        locale: "default",
+        composer_input_disabled: false,
+        call_to_actions: [
+          {
+            type: "web_url",
+            title: "Youtube Tien Channel",
+            url: "https://www.youtube.com/channel/UCTEG9Dt9FBZes1e-_LsC2SA",
+            webview_height_ratio: "full",
+          },
+          {
+            type: "web_url",
+            title: "Fanpage CocoMan Restaurant",
+            url: "https://www.facebook.com/CocoMan-Restaurant-108766495237499/?ref=pages_you_manage",
+            webview_height_ratio: "full",
+          },
+          {
+            type: "postback",
+            title: "Restart this conversation",
+            payload: "RESTART_BOT",
+          },
+        ],
+      },
+    ],
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  await request(
+    {
+      uri: `https://graph.facebook.com/v14.0/me/custom_user_settings?access_token=${PAGE_ACCESS_TOKEN}`,
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      console.log(body);
+      if (!err) {
+        console.log("Set up persistent menu successfully!");
+      } else {
+        console.error("Unable to set up persistent menu:" + err);
+      }
+    }
+  );
+
+  return res.send("Set up persistent menu successfully!");
+};
+
 module.exports = {
   getHomePage: getHomePage,
   postWebhook: postWebhook,
   getWebhook: getWebhook,
   setupProfile: setupProfile,
+  setupPersistentMenu: setupPersistentMenu,
 };

@@ -82,7 +82,7 @@ let sendGetStartedTemplate = () => {
         elements: [
           {
             title: "Welcome to CocoMan restaurant!",
-            subtitle: "Please pick on option below:",
+            subtitle: "Please pick an option below!",
             image_url: IMAGE_GET_STARTED,
             buttons: [
               {
