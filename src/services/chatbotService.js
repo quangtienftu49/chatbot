@@ -9,6 +9,12 @@ const IMAGE_MAIN_MENU =
   "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8&w=1000&q=80";
 const IMAGE_OPEN_HOURS =
   "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvay0xNDUtcG9tLTkwMzguanBn.jpg?s=2z5d7tmbSzVPR3JhSBoDAza-iVHm2yxwqIzBhDqMBHw";
+const IMAGE_APPETIZERS =
+  "https://media.istockphoto.com/photos/arabic-traditional-cuisine-middle-eastern-meze-with-pita-olives-picture-id1271870386?b=1&k=20&m=1271870386&s=170667a&w=0&h=LLVRJx6rfY908-_HZlNnhB3tmNuKV63qvK6oYb3dMEk=";
+const IMAGE_MAIN_COURSES =
+  "https://c1.wallpaperflare.com/preview/389/320/853/suckling-pig-gourmet-menu-eat.jpg";
+const IMAGE_DESSERTS =
+  "https://media.istockphoto.com/photos/strawberry-parfait-dessert-in-a-glass-cup-with-cream-and-chocola-picture-id1252319556?b=1&k=20&m=1252319556&s=170667a&w=0&h=HKBhT-jvzoQUAKz4YhK_FExjmBKzOLwPJywDRy-5zxA=";
 
 let callSendAPI = (sender_psid, response) => {
   // Construct the message body
@@ -213,7 +219,7 @@ let getBrunchMenuTemplate = () => {
           {
             title: "Appetizers",
             subtitle: "Delicous appetizers",
-            image_url: IMAGE_MAIN_MENU,
+            image_url: IMAGE_APPETIZERS,
             buttons: [
               {
                 type: "postback",
@@ -225,7 +231,7 @@ let getBrunchMenuTemplate = () => {
           {
             title: "Main courses",
             subtitle: "A wide range of main courses",
-            image_url: IMAGE_OPEN_HOURS,
+            image_url: IMAGE_MAIN_COURSES,
             buttons: [
               {
                 type: "postback",
@@ -237,7 +243,7 @@ let getBrunchMenuTemplate = () => {
           {
             title: "Desserts",
             subtitle: "Amazing desserts",
-            image_url: IMAGE_CAPACITY,
+            image_url: IMAGE_DESSERTS,
             buttons: [
               {
                 type: "postback",
