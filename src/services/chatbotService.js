@@ -188,7 +188,148 @@ let getMainMenuTemplate = () => {
   return response;
 };
 
+let handleSendBrunchMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = getBrunchMenuTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getBrunchMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Appetizers",
+            subtitle: "Delicous appetizers",
+            image_url: IMAGE_MAIN_MENU,
+            buttons: [
+              {
+                type: "postback",
+                title: "SEE DETAILS",
+                payload: "VIEW_APPETIZERS",
+              },
+            ],
+          },
+          {
+            title: "Main courses",
+            subtitle: "A wide range of main courses",
+            image_url: IMAGE_OPEN_HOURS,
+            buttons: [
+              {
+                type: "postback",
+                title: "SEE DETAILS",
+                payload: "VIEW_MAIN_COURSES",
+              },
+            ],
+          },
+          {
+            title: "Desserts",
+            subtitle: "Amazing desserts",
+            image_url: IMAGE_CAPACITY,
+            buttons: [
+              {
+                type: "postback",
+                title: "SEE DETAILS",
+                payload: "VIEW_DESSERTS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
+let handleSendDinnerMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = getDinnerMenuTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getDinnerMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Our menus",
+            subtitle:
+              "We are pleased to offer you a wide range of menus for brunch and dinner",
+            image_url: IMAGE_MAIN_MENU,
+            buttons: [
+              {
+                type: "postback",
+                title: "BRUNCH",
+                payload: "BRUNCH_MENU",
+              },
+              {
+                type: "postback",
+                title: "DINNER",
+                payload: "DINNER_MENU",
+              },
+            ],
+          },
+          {
+            title: "Open hours",
+            subtitle: "SUN-THU 11AM - 10PM | FRI-SAT 11AM - 11PM",
+            image_url: IMAGE_OPEN_HOURS,
+            buttons: [
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_A_TABLE",
+              },
+            ],
+          },
+          {
+            title: "Capacity",
+            subtitle:
+              "CocoMan accommodates up to 350 seated guests and serves big parties",
+            image_url: IMAGE_CAPACITY,
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW ROOMS",
+                payload: "SHOW_ROOMS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
 module.exports = {
   handleGetStarted: handleGetStarted,
   handleSendMainMenu: handleSendMainMenu,
+  handleSendBrunchMenu: handleSendBrunchMenu,
+  handleSendDinnerMenu: handleSendDinnerMenu,
 };
