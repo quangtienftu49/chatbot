@@ -58,7 +58,7 @@ let handleGetStarted = (sender_psid) => {
     try {
       let username = await getUserName(sender_psid);
       let response1 = { text: `Welcome ${username} to CocoMan restaurant!` };
-      let response2 = sendGetStartedTemplate();
+      let response2 = getStartedTemplate();
 
       // send text message
       await callSendAPI(sender_psid, response1);
@@ -73,7 +73,7 @@ let handleGetStarted = (sender_psid) => {
   });
 };
 
-let sendGetStartedTemplate = () => {
+let getStartedTemplate = () => {
   let response = {
     attachment: {
       type: "template",
@@ -110,6 +110,80 @@ let sendGetStartedTemplate = () => {
   return response;
 };
 
+let handleSendMainMenu = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = getMainMenuTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getMainMenuTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Our menus",
+            subtitle:
+              "We are pleased to offer you a wide range of menus for brunch and dinner",
+            image_url: IMAGE_GET_STARTED,
+            buttons: [
+              {
+                type: "postback",
+                title: "BRUNCH",
+                payload: "BRUNCH_MENU",
+              },
+              {
+                type: "postback",
+                title: "DINNER",
+                payload: "DINNER_MENU",
+              },
+            ],
+          },
+          {
+            title: "Open hours",
+            subtitle: "SUN-THU 11AM - 10PM | FRI-SAT 11AM - 11PM",
+            image_url: IMAGE_GET_STARTED,
+            buttons: [
+              {
+                type: "postback",
+                title: "RESERVE A TABLE",
+                payload: "RESERVE_A_TABLE",
+              },
+            ],
+          },
+          {
+            title: "Capacity",
+            subtitle:
+              "CocoMan accommodates up to 350 seated guests and serves big parties",
+            image_url: IMAGE_GET_STARTED,
+            buttons: [
+              {
+                type: "postback",
+                title: "SHOW ROOMS",
+                payload: "SHOW_ROOMS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
 module.exports = {
   handleGetStarted: handleGetStarted,
+  handleSendMainMenu: handleSendMainMenu,
 };
