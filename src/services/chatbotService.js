@@ -4,6 +4,11 @@ import request from "request";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 const IMAGE_GET_STARTED = "https://bit.ly/3RLirYk";
+const IMAGE_CAPACITY = "https://images2.alphacoders.com/862/862730.jpg";
+const IMAGE_MAIN_MENU =
+  "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8&w=1000&q=80";
+const IMAGE_OPEN_HOURS =
+  "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvay0xNDUtcG9tLTkwMzguanBn.jpg?s=2z5d7tmbSzVPR3JhSBoDAza-iVHm2yxwqIzBhDqMBHw";
 
 let callSendAPI = (sender_psid, response) => {
   // Construct the message body
@@ -136,7 +141,7 @@ let getMainMenuTemplate = () => {
             title: "Our menus",
             subtitle:
               "We are pleased to offer you a wide range of menus for brunch and dinner",
-            image_url: IMAGE_GET_STARTED,
+            image_url: IMAGE_MAIN_MENU,
             buttons: [
               {
                 type: "postback",
@@ -153,7 +158,7 @@ let getMainMenuTemplate = () => {
           {
             title: "Open hours",
             subtitle: "SUN-THU 11AM - 10PM | FRI-SAT 11AM - 11PM",
-            image_url: IMAGE_GET_STARTED,
+            image_url: IMAGE_OPEN_HOURS,
             buttons: [
               {
                 type: "postback",
@@ -166,7 +171,7 @@ let getMainMenuTemplate = () => {
             title: "Capacity",
             subtitle:
               "CocoMan accommodates up to 350 seated guests and serves big parties",
-            image_url: IMAGE_GET_STARTED,
+            image_url: IMAGE_CAPACITY,
             buttons: [
               {
                 type: "postback",
