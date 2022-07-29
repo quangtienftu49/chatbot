@@ -17,6 +17,26 @@ const IMAGE_DESSERTS =
   "https://media.istockphoto.com/photos/strawberry-parfait-dessert-in-a-glass-cup-with-cream-and-chocola-picture-id1252319556?b=1&k=20&m=1252319556&s=170667a&w=0&h=HKBhT-jvzoQUAKz4YhK_FExjmBKzOLwPJywDRy-5zxA=";
 const IMAGE_BACK_TO_MAIN_MENUS =
   "https://upserve.com/media/sites/2/restaurant-menu-design-small-restaurants.jpg";
+const IMAGE_VIEW_APPETIZER_1 =
+  "https://img.apmcdn.org/74ac9b732d3043807e7caeee51dccab773bd376f/uncropped/5e8852-splendid-table-improvised-soups-c-ozgurcoskun-istock-gettyimages-595731814-lede.jpg";
+const IMAGE_VIEW_APPETIZER_2 =
+  "https://media.eggs.ca/assets/RecipeThumbs/_resampled/FillWyIxMjgwIiwiNzIwIl0/chopped-chef-salad.jpg";
+const IMAGE_VIEW_APPETIZER_3 =
+  "https://cdn.vox-cdn.com/thumbor/3m7uQhwDWw1XbhDFJN072xfu5LI=/0x0:2048x1365/1200x900/filters:focal(861x520:1187x846)/cdn.vox-cdn.com/uploads/chorus_image/image/59949587/Swift___Sons_Cold_Platter.0.jpg";
+
+const IMAGE_MAIN_COURSE_1 =
+  "https://foodal.com/wp-content/uploads/2015/06/Is-Grilling-the-Healthiest-Cooking-Method.jpg";
+const IMAGE_MAIN_COURSE_2 =
+  "https://www.lacademie.com/wp-content/uploads/2022/02/types-of-sushi.jpg";
+const IMAGE_MAIN_COURSE_3 =
+  "https://media-cdn.tripadvisor.com/media/photo-s/09/a3/48/07/mandarin-restaurant.jpg";
+
+const IMAGE_VIEW_DESSERT_1 =
+  "https://www.marathonsandmotivation.com/wp-content/uploads/2021/05/No_Bake_Cherry_Cheesecake_15.jpg";
+const IMAGE_VIEW_DESSERT_2 =
+  "https://hips.hearstapps.com/hmg-prod/images/delish-coconut-cream-pie-2-017-1544565155.jpg";
+const IMAGE_VIEW_DESSERT_3 =
+  "http://www.dvo.com/recipe_pages/ultimate/Chocolate_Fudge_Dream_Cake.jpg";
 
 let callSendAPI = (sender_psid, response) => {
   // Construct the message body
@@ -351,10 +371,186 @@ let handleBackToMainMenus = async (sender_psid) => {
   await handleSendMainMenu(sender_psid);
 };
 
+let getViewAppetizerTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Soups",
+            subtitle:
+              "Wonton soup, Hot and sour soup, Egg drop with mushroom soup",
+            image_url: IMAGE_VIEW_APPETIZER_1,
+          },
+          {
+            title: "Salad",
+            subtitle: "Wide range of salads with dressings",
+            image_url: IMAGE_VIEW_APPETIZER_2,
+          },
+          {
+            title: "Chilled seafood",
+            subtitle: "Shrimps or Kiwi mussels",
+            image_url: IMAGE_VIEW_APPETIZER_3,
+          },
+          {
+            title: "Go back",
+            subtitle: "Go back to main menu",
+            image_url: IMAGE_BACK_TO_MAIN_MENUS,
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENUS",
+                payload: "BACK_TO_MAIN_MENUS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
+let handleViewAppetizers = async (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = getViewAppetizerTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getViewMainCourseTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Grill",
+            subtitle: "BBQ spare ribs, Stacked beef, Pizza etc.",
+            image_url: IMAGE_MAIN_COURSE_1,
+          },
+          {
+            title: "Sushi",
+            subtitle: "California rolls, Vegetable spring rolls etc.",
+            image_url: IMAGE_MAIN_COURSE_2,
+          },
+          {
+            title: "Hot food",
+            subtitle:
+              "Vegetable fried rice, Shanghai noodles, Lemon chicken, Torpedo shrimp etc.",
+            image_url: IMAGE_MAIN_COURSE_3,
+          },
+          {
+            title: "Go back",
+            subtitle: "Go back to main menu",
+            image_url: IMAGE_BACK_TO_MAIN_MENUS,
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENUS",
+                payload: "BACK_TO_MAIN_MENUS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
+let handleViewMainCourses = async (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = getViewMainCourseTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getViewDessertTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Cherry cheesecake",
+            subtitle: "$5",
+            image_url: IMAGE_VIEW_DESSERT_1,
+          },
+          {
+            title: "Coconut cream pie",
+            subtitle: "$2",
+            image_url: IMAGE_VIEW_DESSERT_2,
+          },
+          {
+            title: "Chocolate dream",
+            subtitle: "$6",
+            image_url: IMAGE_VIEW_DESSERT_3,
+          },
+          {
+            title: "Go back",
+            subtitle: "Go back to main menu",
+            image_url: IMAGE_BACK_TO_MAIN_MENUS,
+            buttons: [
+              {
+                type: "postback",
+                title: "BACK TO MAIN MENUS",
+                payload: "BACK_TO_MAIN_MENUS",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
+let handleViewDesserts = async (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = getViewDessertTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   handleGetStarted: handleGetStarted,
   handleSendMainMenu: handleSendMainMenu,
   handleSendBrunchMenu: handleSendBrunchMenu,
   handleSendDinnerMenu: handleSendDinnerMenu,
   handleBackToMainMenus: handleBackToMainMenus,
+  handleViewAppetizers: handleViewAppetizers,
+  handleViewMainCourses: handleViewMainCourses,
+  handleViewDesserts: handleViewDesserts,
 };

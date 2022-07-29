@@ -140,13 +140,13 @@ async function handlePostback(sender_psid, received_postback) {
       break;
 
     case "VIEW_APPETIZERS":
-      await chatbotService.handleSendDinnerMenu(sender_psid);
+      await chatbotService.handleViewAppetizers(sender_psid);
       break;
     case "VIEW_MAIN_COURSES":
-      await chatbotService.handleSendDinnerMenu(sender_psid);
+      await chatbotService.handleViewMainCourses(sender_psid);
       break;
     case "VIEW_DESSERTS":
-      await chatbotService.handleSendDinnerMenu(sender_psid);
+      await chatbotService.handleViewDesserts(sender_psid);
       break;
     case "BACK_TO_MAIN_MENUS":
       await chatbotService.handleBackToMainMenus(sender_psid);
