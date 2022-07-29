@@ -149,7 +149,7 @@ async function handlePostback(sender_psid, received_postback) {
       await chatbotService.handleSendDinnerMenu(sender_psid);
       break;
     case "BACK_TO_MAIN_MENUS":
-      await chatbotService.handleSendDinnerMenu(sender_psid);
+      await chatbotService.handleBackToMainMenus(sender_psid);
       break;
 
     default:
