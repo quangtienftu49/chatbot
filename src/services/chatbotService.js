@@ -15,6 +15,8 @@ const IMAGE_MAIN_COURSES =
   "https://c1.wallpaperflare.com/preview/389/320/853/suckling-pig-gourmet-menu-eat.jpg";
 const IMAGE_DESSERTS =
   "https://media.istockphoto.com/photos/strawberry-parfait-dessert-in-a-glass-cup-with-cream-and-chocola-picture-id1252319556?b=1&k=20&m=1252319556&s=170667a&w=0&h=HKBhT-jvzoQUAKz4YhK_FExjmBKzOLwPJywDRy-5zxA=";
+const IMAGE_BACK_TO_MAIN_MENUS =
+  "https://upserve.com/media/sites/2/restaurant-menu-design-small-restaurants.jpg";
 
 let callSendAPI = (sender_psid, response) => {
   // Construct the message body
@@ -249,6 +251,18 @@ let getBrunchMenuTemplate = () => {
                 type: "postback",
                 title: "SEE DETAILS",
                 payload: "VIEW_DESSERTS",
+              },
+            ],
+          },
+          {
+            title: "Go back",
+            subtitle: "Go back to the main menus",
+            image_url: IMAGE_BACK_TO_MAIN_MENUS,
+            buttons: [
+              {
+                type: "postback",
+                title: "GO BACK",
+                payload: "BACK_TO_MAIN_MENUS",
               },
             ],
           },
