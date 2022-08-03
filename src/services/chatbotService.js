@@ -38,6 +38,8 @@ const IMAGE_VIEW_DESSERT_2 =
 const IMAGE_VIEW_DESSERT_3 =
   "http://www.dvo.com/recipe_pages/ultimate/Chocolate_Fudge_Dream_Cake.jpg";
 
+const IMAGE_ROOMS_DETAIL = "https://i.gifer.com/NAWM.gif";
+
 let callSendAPI = async (sender_psid, response) => {
   // Construct the message body
   let request_body = {
@@ -606,6 +608,65 @@ let handleViewDesserts = async (sender_psid) => {
   });
 };
 
+let getImageRoomTemplate = () => {
+  let response = {
+    attachment: {
+      type: "image",
+      payload: {
+        url: IMAGE_ROOMS_DETAIL,
+        is_reusable: true,
+      },
+    },
+  };
+  return response;
+};
+
+let getButtonRoomsTemplate = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "button",
+        text: "Our capacity is up 500 seated guests at the same time.",
+        buttons: [
+          {
+            type: "postback",
+            title: "RESERVE A TABLE",
+            payload: "RESERVE_A_TABLE",
+          },
+          {
+            type: "postback",
+            title: "MAIN MENU",
+            payload: "MAIN_MENU",
+          },
+        ],
+      },
+    },
+  };
+
+  return response;
+};
+
+let handleShowRoomsDetail = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // send an image
+      let response1 = getImageRoomTemplate();
+
+      // send a button template : text, buttons
+      let response2 = getButtonRoomsTemplate();
+
+      // send text message
+      await callSendAPI(sender_psid, response1);
+      await callSendAPI(sender_psid, response2);
+
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   handleGetStarted: handleGetStarted,
   handleSendMainMenu: handleSendMainMenu,
@@ -615,4 +676,5 @@ module.exports = {
   handleViewAppetizers: handleViewAppetizers,
   handleViewMainCourses: handleViewMainCourses,
   handleViewDesserts: handleViewDesserts,
+  handleShowRoomsDetail: handleShowRoomsDetail,
 };
