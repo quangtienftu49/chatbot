@@ -374,45 +374,50 @@ let getDinnerMenuTemplate = () => {
         template_type: "generic",
         elements: [
           {
-            title: "Our menus",
-            subtitle:
-              "We are pleased to offer you a wide range of menus for brunch and dinner",
-            image_url: IMAGE_MAIN_MENU,
+            title: "Appetizers",
+            subtitle: "Delicous appetizers",
+            image_url: IMAGE_APPETIZERS,
             buttons: [
               {
                 type: "postback",
-                title: "BRUNCH",
-                payload: "BRUNCH_MENU",
-              },
-              {
-                type: "postback",
-                title: "DINNER",
-                payload: "DINNER_MENU",
+                title: "SEE DETAILS",
+                payload: "VIEW_APPETIZERS",
               },
             ],
           },
           {
-            title: "Open hours",
-            subtitle: "SUN-THU 11AM - 10PM | FRI-SAT 11AM - 11PM",
-            image_url: IMAGE_OPEN_HOURS,
+            title: "Main courses",
+            subtitle: "A wide range of main courses",
+            image_url: IMAGE_MAIN_COURSES,
             buttons: [
               {
                 type: "postback",
-                title: "RESERVE A TABLE",
-                payload: "RESERVE_A_TABLE",
+                title: "SEE DETAILS",
+                payload: "VIEW_MAIN_COURSES",
               },
             ],
           },
           {
-            title: "Capacity",
-            subtitle:
-              "CocoMan accommodates up to 350 seated guests and serves big parties",
-            image_url: IMAGE_CAPACITY,
+            title: "Desserts",
+            subtitle: "Amazing desserts",
+            image_url: IMAGE_DESSERTS,
             buttons: [
               {
                 type: "postback",
-                title: "SHOW ROOMS",
-                payload: "SHOW_ROOMS",
+                title: "SEE DETAILS",
+                payload: "VIEW_DESSERTS",
+              },
+            ],
+          },
+          {
+            title: "Go back",
+            subtitle: "Go back to the main menus",
+            image_url: IMAGE_BACK_TO_MAIN_MENUS,
+            buttons: [
+              {
+                type: "postback",
+                title: "GO BACK",
+                payload: "BACK_TO_MAIN_MENUS",
               },
             ],
           },
