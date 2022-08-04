@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
 }
 .fix-height {
-  flex: 0.8;
+  flex: 1;
 }
 
 a,
