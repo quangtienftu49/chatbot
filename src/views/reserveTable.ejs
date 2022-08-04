@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve a table at CocoMan Restaurant</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Load custom Javascript and CSS-->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/reserveATable.js"></script>
+
+</head>
+
+<body>
+    <div class="container fix-height">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center mt-3">
+                    <span class="title">Customer's information</span>
+                </div>
+                <input type="text" id="psid" hidden>
+                <div class="form-group">
+                    <label for="customerName">Full name:</label>
+                    <input type="text" id="customerName" class="form-control " placeholder="Full name...">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (<span style="color: red">*</span>):</label>
+                    <input type="email" id="email" class="form-control" placeholder="Email...">
+                    <div class="invalid-feedback">Email invalid</div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone number (<span style="color: red">*</span>):</label>
+                    <input type="text" id="phoneNumber" class="form-control" placeholder="Phone number...">
+                    <div class="invalid-feedback">Invalid phone number</div>
+                </div>
+                <button class="btn btn-primary" id="btnReserveTable"> RESERVE A TABLE </button>
+            </div>
+
+        </div>
+
+    </div>
+    <footer>
+        <div class="text-center">
+            <div class="">
+                <span class="ml-3">
+                    Created by <a href="https://www.youtube.com/channel/UCTEG9Dt9FBZes1e-_LsC2SA"
+                        title="Tien Quang Dinh" target="_blank">Tien Quang Dinh</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
