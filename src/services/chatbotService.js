@@ -183,9 +183,11 @@ let getStartedTemplate = () => {
                 payload: "MAIN_MENU",
               },
               {
-                type: "postback",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "RESERVE A TABLE",
-                payload: "RESERVE_A_TABLE",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, //false: open the webview in a new tab
               },
               {
                 type: "postback",
@@ -248,9 +250,11 @@ let getMainMenuTemplate = () => {
             image_url: IMAGE_OPEN_HOURS,
             buttons: [
               {
-                type: "postback",
+                type: "web_url",
+                url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "RESERVE A TABLE",
-                payload: "RESERVE_A_TABLE",
+                webview_height_ratio: "tall",
+                messenger_extensions: true, //false: open the webview in a new tab
               },
             ],
           },
@@ -630,9 +634,11 @@ let getButtonRoomsTemplate = () => {
         text: "Our capacity is up 500 seated guests at the same time.",
         buttons: [
           {
-            type: "postback",
+            type: "web_url",
+            url: `${process.env.URL_WEB_VIEW_ORDER}`,
             title: "RESERVE A TABLE",
-            payload: "RESERVE_A_TABLE",
+            webview_height_ratio: "tall",
+            messenger_extensions: true, //false: open the webview in a new tab
           },
           {
             type: "postback",
