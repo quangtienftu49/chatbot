@@ -186,7 +186,7 @@ let getStartedTemplate = () => {
                 type: "web_url",
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "RESERVE A TABLE",
-                webview_height_ratio: "tall",
+                webview_height_ratio: "compact",
                 messenger_extensions: true, //false: open the webview in a new tab
               },
               {
@@ -253,7 +253,7 @@ let getMainMenuTemplate = () => {
                 type: "web_url",
                 url: `${process.env.URL_WEB_VIEW_ORDER}`,
                 title: "RESERVE A TABLE",
-                webview_height_ratio: "tall",
+                webview_height_ratio: "compact",
                 messenger_extensions: true, //false: open the webview in a new tab
               },
             ],
@@ -637,7 +637,7 @@ let getButtonRoomsTemplate = () => {
             type: "web_url",
             url: `${process.env.URL_WEB_VIEW_ORDER}`,
             title: "RESERVE A TABLE",
-            webview_height_ratio: "tall",
+            webview_height_ratio: "compact",
             messenger_extensions: true, //false: open the webview in a new tab
           },
           {
