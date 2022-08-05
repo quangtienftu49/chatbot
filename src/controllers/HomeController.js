@@ -287,7 +287,7 @@ let handleReserveATable = (req, res) => {
   return res.render("reserveTable.ejs");
 };
 
-let handlePostReserveATable = (req, res) => {
+let handlePostReserveATable = async (req, res) => {
   try {
     let customerName = "";
 
@@ -302,10 +302,10 @@ let handlePostReserveATable = (req, res) => {
       \nPhone number: ${req.body.phoneNumber}`,
     };
 
-    await chatbotService.callSendAPI(req.body.psid, response1)
+    await chatbotService.callSendAPI(req.body.psid, response1);
     return res.status(200).json({
-      message: "Okay"
-    })
+      message: "Okay",
+    });
   } catch (e) {
     console.log("Error to post reserve a table", e);
     return res.status(500).json({
