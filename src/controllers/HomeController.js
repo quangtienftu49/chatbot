@@ -287,6 +287,33 @@ let handleReserveATable = (req, res) => {
   return res.render("reserveTable.ejs");
 };
 
+let handlePostReserveATable = (req, res) => {
+  try {
+    let customerName = "";
+
+    if (req.body.customerName === "") {
+      customerName = "Empty";
+    } else customerName = req.body.customerName;
+
+    let response1 = {
+      text: `---Customer's information for reservations---
+      \nFull name: ${customerName}
+      \nEmail: ${req.body.email}
+      \nPhone number: ${req.body.phoneNumber}`,
+    };
+
+    await chatbotService.callSendAPI(req.body.psid, response1)
+    return res.status(200).json({
+      message: "Okay"
+    })
+  } catch (e) {
+    console.log("Error to post reserve a table", e);
+    return res.status(500).json({
+      message: "Server error!",
+    });
+  }
+};
+
 module.exports = {
   getHomePage: getHomePage,
   postWebhook: postWebhook,
@@ -294,4 +321,5 @@ module.exports = {
   setupProfile: setupProfile,
   setupPersistentMenu: setupPersistentMenu,
   handleReserveATable: handleReserveATable,
+  handlePostReserveATable: handlePostReserveATable,
 };
