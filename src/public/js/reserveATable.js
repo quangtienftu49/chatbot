@@ -78,7 +78,7 @@ function handleClickButtonReserveTable() {
 
       //send data to node.js server
       $.ajax({
-        url: `${window.location.origin}/reserve-table-ajax`,
+        url: `${window.location.origin}/reserve-a-table-ajax`,
         method: "POST",
         data: data,
         success: function (data) {
