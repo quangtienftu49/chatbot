@@ -165,7 +165,7 @@ let handleGetStarted = (sender_psid) => {
   });
 };
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -184,7 +184,7 @@ let getStartedTemplate = () => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
                 title: "RESERVE A TABLE",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, //false: open the webview in a new tab
@@ -207,7 +207,7 @@ let getStartedTemplate = () => {
 let handleSendMainMenu = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let response1 = getMainMenuTemplate();
+      let response1 = getMainMenuTemplate(sender_psid);
 
       // send text message
       await callSendAPI(sender_psid, response1);
@@ -219,7 +219,7 @@ let handleSendMainMenu = (sender_psid) => {
   });
 };
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -251,7 +251,7 @@ let getMainMenuTemplate = () => {
             buttons: [
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
                 title: "RESERVE A TABLE",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, //false: open the webview in a new tab
@@ -625,7 +625,7 @@ let getImageRoomTemplate = () => {
   return response;
 };
 
-let getButtonRoomsTemplate = () => {
+let getButtonRoomsTemplate = (senderID) => {
   let response = {
     attachment: {
       type: "template",
@@ -635,7 +635,7 @@ let getButtonRoomsTemplate = () => {
         buttons: [
           {
             type: "web_url",
-            url: `${process.env.URL_WEB_VIEW_ORDER}`,
+            url: `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
             title: "RESERVE A TABLE",
             webview_height_ratio: "tall",
             messenger_extensions: true, //false: open the webview in a new tab
@@ -657,10 +657,10 @@ let handleShowRoomsDetail = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       // send an image
-      let response1 = getImageRoomTemplate();
+      let response1 = getImageRoomTemplate(sender_psid);
 
       // send a button template : text, buttons
-      let response2 = getButtonRoomsTemplate();
+      let response2 = getButtonRoomsTemplate(sender_psid);
 
       // send text message
       await callSendAPI(sender_psid, response1);
