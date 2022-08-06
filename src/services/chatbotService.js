@@ -150,7 +150,7 @@ let handleGetStarted = (sender_psid) => {
     try {
       let username = await getUserName(sender_psid);
       let response1 = { text: `Welcome ${username} to CocoMan restaurant!` };
-      let response2 = getStartedTemplate();
+      let response2 = getStartedTemplate(sender_psid);
 
       // send text message
       await callSendAPI(sender_psid, response1);
@@ -184,7 +184,7 @@ let getStartedTemplate = (senderID) => {
               },
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "RESERVE A TABLE",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, //false: open the webview in a new tab
@@ -251,7 +251,7 @@ let getMainMenuTemplate = (senderID) => {
             buttons: [
               {
                 type: "web_url",
-                url: `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
+                url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
                 title: "RESERVE A TABLE",
                 webview_height_ratio: "tall",
                 messenger_extensions: true, //false: open the webview in a new tab
@@ -635,7 +635,7 @@ let getButtonRoomsTemplate = (senderID) => {
         buttons: [
           {
             type: "web_url",
-            url: `${process.env.URL_WEB_VIEW_ORDER}?senderID=${senderID}`,
+            url: `${process.env.URL_WEB_VIEW_ORDER}/${senderID}`,
             title: "RESERVE A TABLE",
             webview_height_ratio: "tall",
             messenger_extensions: true, //false: open the webview in a new tab
