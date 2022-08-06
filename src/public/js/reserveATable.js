@@ -23,7 +23,14 @@ window.extAsyncInit = function () {
     },
     function error(err) {
       // error
-      console.log("Error to reserve a table with CocoMan chatbot", err);
+      console.log(
+        "Error to reserve a table with CocoMan chatbot with MessengerExtensions.getContext",
+        err
+      );
+
+      // run fallback, get userID from URL
+      $("#psid").val(senderID);
+      handleClickButtonReserveTable();
     }
   );
 };
