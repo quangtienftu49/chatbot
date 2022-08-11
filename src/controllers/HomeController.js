@@ -295,7 +295,7 @@ let handlePostReserveATable = async (req, res) => {
     let customerName = "";
 
     if (req.body.customerName === "") {
-      customerName = "Empty";
+      customerName = chatbotService.getUserName(req.body.psid);
     } else customerName = req.body.customerName;
 
     let response1 = {

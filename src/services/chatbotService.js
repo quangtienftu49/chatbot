@@ -684,4 +684,5 @@ module.exports = {
   handleViewDesserts: handleViewDesserts,
   handleShowRoomsDetail: handleShowRoomsDetail,
   callSendAPI: callSendAPI,
+  getUserName: getUserName,
 };
