@@ -40,6 +40,9 @@ const IMAGE_VIEW_DESSERT_3 =
 
 const IMAGE_ROOMS_DETAIL = "https://i.gifer.com/NAWM.gif";
 
+const IMAGE_GIF_WELCOME =
+  "https://media3.giphy.com/media/4VlbCwmZlV2U0/giphy.gif?cid=ecf05e47ikq59q3gstsk74b6idk4je69wlb7urzhhfxy1504&rid=giphy.gif&ct=g";
+
 let callSendAPI = async (sender_psid, response) => {
   // Construct the message body
   let request_body = {
@@ -150,13 +153,21 @@ let handleGetStarted = (sender_psid) => {
     try {
       let username = await getUserName(sender_psid);
       let response1 = { text: `Welcome ${username} to CocoMan restaurant!` };
-      let response2 = getStartedTemplate(sender_psid);
+      // let response2 = getStartedTemplate(sender_psid);
+
+      // send an image
+      let response2 = getImageStartedTemplate();
+
+      let response3 = getStartedQuickReplyTemplate(sender_psid);
 
       // send text message
       await callSendAPI(sender_psid, response1);
 
-      // send generic template message
+      // send an image
       await callSendAPI(sender_psid, response2);
+
+      // send a quick reply
+      await callSendAPI(sender_psid, response3);
 
       resolve("done");
     } catch (e) {
@@ -199,6 +210,45 @@ let getStartedTemplate = (senderID) => {
         ],
       },
     },
+  };
+
+  return response;
+};
+
+let getImageStartedTemplate = () => {
+  let response = {
+    attachment: {
+      type: "image",
+      payload: {
+        url: IMAGE_GIF_WELCOME,
+        is_reusable: true,
+      },
+    },
+  };
+
+  return response;
+};
+
+let getStartedQuickReplyTemplate = () => {
+  let response = {
+    text: "Please pick an option below!",
+    quick_replies: [
+      {
+        content_type: "text",
+        title: "MAIN MENUS",
+        payload: "MAIN_MENU",
+      },
+      {
+        content_type: "text",
+        title: "RESERVE A TABLE",
+        payload: "<POSTBACK_PAYLOAD>",
+      },
+      {
+        content_type: "text",
+        title: "CHATBOT GUIDELINES",
+        payload: "CHATBOT_GUIDELINES",
+      },
+    ],
   };
 
   return response;
