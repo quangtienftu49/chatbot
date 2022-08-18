@@ -246,11 +246,6 @@ let getStartedQuickReplyTemplate = () => {
       },
       {
         content_type: "text",
-        title: "RESERVE A TABLE",
-        payload: "<POSTBACK_PAYLOAD>",
-      },
-      {
-        content_type: "text",
         title: "CHATBOT GUIDELINES",
         payload: "CHATBOT_GUIDELINES",
       },
